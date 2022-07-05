@@ -116,25 +116,25 @@ public class UserController {
     }
 
 
-//    @GetMapping("/registration")
-//    public String registration(Model model) {
-//        if (securityService.isAuthenticated()) {
-//            return "redirect:/";
-//        }
-//        model.addAttribute("userForm", new User());
-//        return "registration";
-//    }
-//
-//    @PostMapping("/registration")
-//    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
-//        userValidator.validate(userForm, bindingResult);
-//
-//        if (bindingResult.hasErrors()) {
-//            return "registration";
-//        }
-//        userService.save(userForm);
-//        securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());
-//        return "/admin_section/user-profile";
-//    }
+    @GetMapping("/registration")
+    public String registration(Model model) {
+        if (securityService.isAuthenticated()) {
+            return "redirect:/";
+        }
+        model.addAttribute("userForm", new User());
+        return "registration";
+    }
+
+    @PostMapping("/registration")
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
+        userValidator.validate(userForm, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        userService.save(userForm);
+        securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());
+        return "redirect:/";
+    }
 
 }
