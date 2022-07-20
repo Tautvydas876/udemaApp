@@ -1,0 +1,22 @@
+
+
+
+
+Projekto konfigūracija:
+
+1. Susikurti localhost/phpMyAdmin duomenų bazę "udema" (Pačioje duombazėja nereikia papildomai kurti lentelių, 
+														juos automatiškai sukuria programa)
+	
+	1.1	Projekte yra failas "application.properties", jame yra MySQL lokalios Duombazės prisijungimai 
+	1.2 Pagal nutylėjimą MySQL Duombazė neprašo slaptažodžio, bet jei pas jumis reikalauja slaptažodžio:
+		1.2.1 "application.properties" 3 eilutėja po "spring.datasource.password=" suveskite slaptažodį
+
+2. 	Vartotojo Sūkurimas:
+	2.1 Nueiti į projekto katalogą "controller"
+	2.2 Atidaryti "UserController" failą
+	2.3 Atkomentuoti 119-138 eilutes (metodas "registration" naudojamas naujo vartotojo sūlurimui)
+	2.4 Paleisti programą
+	2.5 Naršyklėja suvesti "http://localhost:8080/registration"
+	2.6 Užpildykite registracijos formą	
+	2.7 Spausti "Registe" (taip bus sukurtas naujas vartotojas su encryptintu slaptažodžiu ir saugojamas duomenų bazėja)
+	2.8 Grįšti atgal prie "UserController" failo, ir užkomentuoti 119-138 eilutes
