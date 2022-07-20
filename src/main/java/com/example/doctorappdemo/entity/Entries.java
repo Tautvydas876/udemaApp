@@ -13,7 +13,7 @@ public class Entries {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name = "id")
     private int id;
 
 
@@ -23,17 +23,17 @@ public class Entries {
     @Column(name = "title", length = 512)
     private String title = (String.valueOf(StandardCharsets.UTF_8));
 
-    @Column(name = "entry" , columnDefinition = "text", length = 512)
+    @Column(name = "entry", columnDefinition = "text", length = 512)
     private String entry;
 
 
 //    FK
 
-    @OneToMany( cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "picture_id")
     private List<Pictures> picture;
 
-    @OneToMany( cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "entry_id")
     private List<Comments> comments;
 
@@ -112,4 +112,15 @@ public class Entries {
     }
 
 
+    @Override
+    public String toString() {
+        return "Entries{" +
+                "id=" + id +
+                ", data='" + data + '\'' +
+                ", title='" + title + '\'' +
+                ", entry='" + entry + '\'' +
+                ", picture=" + picture +
+                ", comments=" + comments +
+                '}';
+    }
 }

@@ -34,7 +34,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    private static int ID =0;
+    private static int ID = 0;
 
     //veikia
     @GetMapping("/login")
@@ -54,21 +54,29 @@ public class UserController {
     @GetMapping("/userPage")
     public String viewDetails(@AuthenticationPrincipal UserDetails loggerUser, Model model) {
 
-        String userName = loggerUser.getUsername();
-        User user = userService.findByEmail(userName);
-
-        if (user != null)
-            ID = userService.findId(userName);
-
-        User userFromDb = userService.findUserById(ID);
-
-
-        if (Objects.equals(user, userFromDb)) {
-            model.addAttribute("user", user);
+        if (loggerUser == null) {
+            return "login";
         } else {
-            model.addAttribute("user", userFromDb);
+
+
+            String userName = loggerUser.getUsername();
+            User user = userService.findByEmail(userName);
+
+
+            if (user != null)
+                ID = userService.findId(userName);
+
+            User userFromDb = userService.findUserById(ID);
+
+
+            if (Objects.equals(user, userFromDb)) {
+                model.addAttribute("user", user);
+            } else {
+                model.addAttribute("user", userFromDb);
+            }
+            return "/admin_section/user-profile";
         }
-        return "/admin_section/user-profile";
+
     }
 
 

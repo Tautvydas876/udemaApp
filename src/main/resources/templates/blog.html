@@ -148,11 +148,20 @@
                 <div class="col-lg-9">
                     <article class="blog wow fadeIn">
                         <div class="row g-0" th:object="${entries}" th:each="ent , entCount:${entries}">
-                            <div class="col-lg-7" th:each="pic : ${ent.getPicture()}">
+                            <div class="col-lg-7" th:if="${!ent.getPicture().isEmpty()}">
+                                <figure th:each="pic : ${ent.getPicture()}">
+                                    <a th:if="${ent.getPicture() != null}"
+                                       href="blog-post" th:href="@{blog-post(entriesId=${ent.getId()})}"><img
+                                            th:src="${pic.getPictureUrl()}"
+                                            alt="" th:alt="${entCount.index}"
+                                            th:width="800" th:height="533"></a>
+                                    <div class="preview"><span>Read more</span></div>
+                                </figure>
+                            </div>
+                            <div class="col-lg-7" th:unless="${!ent.getPicture().isEmpty()}">
                                 <figure>
-                                    <a href="blog-post" th:href="@{blog-post(entri${}esId=${ent.getId()})}"><img
-                                            th:src="${pic.getPictureUrl()}" alt="" th:alt="${entCount.index}"
-                                           th:width="800" th:height="533">
+                                    <a th:href="@{blog-post(entriesId=${ent.getId()})}"><img
+                                            src="http://via.placeholder.com/800x533/ccc/fff/blog-1.jpg" alt="">
                                         <div class="preview"><span>Read more</span></div>
                                     </a>
                                 </figure>
@@ -164,12 +173,12 @@
                                            th:text="${ent.getTitle()}"></a></h3>
                                     <p th:text="${ent.getEntry()}"></p>
 
-                                    <ul>
+                                    <ul th:object="${user}">
                                         <li>
                                             <div class="thumb"><img
                                                     src="https://via.placeholder.com/80x80/ccc/fff/thumb_blog.jpg"
-                                                    alt=""></div>
-                                            Jessica Hoops
+                                                    alt="" ></div>
+                                            <p th:text="${user.email}" ></p>
                                         </li>
                                         <li><i class="icon_comment_alt"></i></li>
                                     </ul>

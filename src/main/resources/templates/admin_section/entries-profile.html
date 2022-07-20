@@ -112,10 +112,16 @@
                     <span class="nav-link-text">Bookmarks</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Entries">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Create Entry">
                 <a class="nav-link" href="entries-profile.html" th:href="@{/entries-profile}">
                     <i class="fa fa-fw fa-plus-circle"></i>
-                    <span class="nav-link-text">Entries</span>
+                    <span class="nav-link-text">Create Entry</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="View Entries">
+                <a class="nav-link" href="entries-profile.html" th:href="@{/blog}">
+                    <i class="fa fa-fw fa-bars"></i>
+                    <span class="nav-link-text">View Entries</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
@@ -270,30 +276,30 @@
         </ul>
     </div>
 </nav>
-
-<div class="container margin_60_35">
-    <form th:action="@{/entries-profile/create-Entry}" method="post">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="form-group">
-                    <h2>Create Entrie</h2>
-                    <input type="text" name="title" id="title" class="form-control" placeholder="Title" required>
-                </div>
-                <div class="form-group">
+<div class="content-wrapper">
+    <div class="container margin_60_35">
+        <form th:action="@{/entries-profile/create-Entry}" method="post">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <h2>Create Entrie</h2>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Title" required>
+                    </div>
+                    <div class="form-group">
                 <textarea class="form-control" name="entry" id="entry"
                           rows="6" placeholder="Entry" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" id="submit" class="btn_1 rounded add_bottom_30">Submit</button>
-                </div>
-                <div class="form-group">
-                    <span class="has-message-m" th:text="${message}"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="submit" class="btn_1 rounded add_bottom_30">Submit</button>
+                    </div>
+                    <div class="form-group">
+                        <span class="has-message-m" th:text="${message}"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
-
 
 <footer class="sticky-footer">
     <div class="container">
